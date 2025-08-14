@@ -1,109 +1,99 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Alex's Portfolio - TEST12345</title>
-    <!-- https://css-tricks.com/snippets/css/a-guide-to-flexbox/ -->
-
-
-    <!-- 1. CSS with all attributes + HTML5 with all tags and attributes https://tympanus.net/codrops/css_reference/ -->
-    <!-- 2. PHP/SQL with all basics + Laravel (https://laracasts.com/browse/frameworks)-->
-
-    <!-- https://editor.method.ac/ -->
-
-    <style type="text/css">
-        body {
-            margin: 0;
-            padding: 0;
-            margin-top: 0px;
-        }
-        
-        .bgSizeCover {
-            background-image: url(1.jpg);
-            background-size: cover;
-            width: 100%;
-            height: 600px;
-            left: 0px;
-            right: 0px;
-        }
-        
-        .content {
-            background-image: linear-gradient(to right, rgb(91, 121, 162) 0%, rgb(46, 68, 105) 100%);
-            width: 100%;
-            height: 200px;
-            left: 0;
-            font-family: Open Sans, Helvetica, Arial, sans-serif;
-            background-size: cover;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        
-        .portfolio {
-            font-family: sans-serif;
-            font-size: 24px;
-            font-weight: bold;
-            color: whitesmoke;
-            text-align: center;
-        }
-        
-        .grid-container {
-            display: grid;
-            grid-template-columns: auto auto auto auto;
-            grid-gap: 10px;
-            background-color: #2196F3;
-            padding: 10px;
-        }
-        
-        .grid-container>div {
-            background-color: rgba(255, 255, 255, 0.8);
-            border: 1px solid black;
-            text-align: center;
-            font-size: 30px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yakubovski</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+<style>
+/* весь CSS такой же, как в Settlarium, чтобы стиль совпадал */
+body {margin:0;font-family:"Inter",sans-serif;background-color:#f5f5f5;color:#1a2a6c;line-height:1.6;}
+h1,h2,h3{margin:0;}
+h1{font-family:'Merriweather',serif;font-weight:700;}
+a{text-decoration:none;color:inherit;}
+header{background-color:#ffffff;padding:1.5rem 1rem;text-align:center;}
+header h1{font-size:2.4rem;color:#1a2a6c;letter-spacing:1px;}
+nav{margin-top:0.5rem;}
+nav a{position:relative;display:inline-block;margin:0 1rem;font-size:0.95rem;font-weight:600;color:#1a2a6c;padding-bottom:2px;overflow:hidden;}
+nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:50%;background-color:rgba(168,213,162,0.5);transition:width 0.3s ease;}
+nav a:hover::after{width:100%;}
+.hero{padding:2rem 1rem;text-align:center;background-color:#1a2a6c;}
+.hero h2{font-size:1.8rem;color:#f9f9f9;margin-bottom:1rem;font-family:'Merriweather',serif;}
+.hero p{max-width:700px;margin:0 auto;font-size:1.05rem;color:#dce0f0;}
+.articles{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1200px;margin:2rem auto;padding:0 1rem;}
+@media(max-width:768px){.articles{grid-template-columns:1fr;}}
+.card{background-color:#ffffff;display:flex;flex-direction:column;border-radius:0;opacity:0;transform:translateY(20px);transition:transform 0.6s ease,opacity 0.6s ease,box-shadow 0.3s ease,background 0.3s ease;}
+.card.visible{opacity:1;transform:translateY(0);}
+.card:hover{box-shadow:0 15px 35px rgba(0,0,0,0.15);background:linear-gradient(180deg,#ffffff 0%,#f0f4ff 100%);transform:translateY(-6px);}
+.card-img{background-color:#e6f0ff;height:160px;display:flex;align-items:center;justify-content:center;font-weight:bold;color:#1a2a6c;font-size:1rem;border-bottom:1px solid #d0d4e0;}
+.card-content{padding:1rem;}
+.card-content h3{font-size:1.2rem;color:#1a2a6c;margin-bottom:0.5rem;font-family:'Merriweather',serif;}
+.card-content p{font-size:0.95rem;color:#1a2a6c;}
+.ad-banner{max-width:1200px;margin:2rem auto;padding:1.5rem;text-align:center;background-color:#ffffff;border:1px dashed #cccccc;font-style:italic;color:#1a2a6c;}
+footer{background-color:#ffffff;padding:1.5rem;text-align:center;font-size:0.9rem;color:#1a2a6c;border-top:1px solid #cccccc;}
+</style>
 </head>
-
 <body>
-    <div class="content">
 
-        <!-- https://editor.method.ac/ -->
-        <svg width="303" height="50" xmlns="http://www.w3.org/2000/svg">
- <g>
-  <text xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="24" id="svg_3" y="36" x="13" stroke-width="0" stroke="#000" fill="#000000">Alexander Yakubovski</text>
-  <path transform="rotate(-0.384793, 287.346, 15.2712)" opacity="0.5" id="svg_6" d="m275.54032,12.54999l9.01882,0l2.78689,-8.80608l2.78689,8.80608l9.01882,0l-7.29637,5.44239l2.78703,8.80608l-7.29637,-5.44254l-7.29637,5.44254l2.78703,-8.80608l-7.29637,-5.44239z" stroke-width="1.5" stroke="#000" fill="#fff"/>
- </g>
-</svg>
+<header>
+<h1>Yakubovski</h1>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Portfolio</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+</nav>
+</header>
 
+<section class="hero">
+<h2>Professional Portfolio & Insights</h2>
+<p>Yakubovski showcases work, insights, and projects in a clear, elegant format for clients and collaborators.</p>
+</section>
 
-    </div>
+<section class="articles" id="articles"></section>
 
-    <div class="bgSizeCover">
+<div class="ad-banner">
+[ Advertisement Space ]
+</div>
 
-    </div>
-    <div class="content">
-        <div class="portfolio">Portfolio</div>
-        <div class="grid-container">
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-            <div>5</div>
-            <div>6</div>
-            <div>7</div>
-            <div>8</div>
-        </div>
+<footer>
+&copy; 2025 Yakubovski — All Rights Reserved
+</footer>
 
-
-
-
-        <div><img src="insta.png" width="19" height="20" alt=""></div>
-    </div>
-    </div>
-
-
+<script>
+const container = document.getElementById('articles');
+const articles=[
+    {title:"Project One", text:"Brief description of the first project."},
+    {title:"Project Two", text:"Overview of the second project."},
+    {title:"Project Three", text:"Details about the third project."},
+    {title:"Insights", text:"Professional insights and thoughts."},
+    {title:"Media Coverage", text:"Press and media highlights."},
+    {title:"Awards", text:"Achievements and recognition."},
+    {title:"Services", text:"Overview of offered services."},
+    {title:"Testimonials", text:"What clients say."},
+    {title:"Contact Info", text:"How to reach out and collaborate."}
+];
+articles.forEach(a=>{
+    const card=document.createElement('div');
+    card.className='card';
+    card.innerHTML=`
+        <div class="card-img">Image</div>
+        <div class="card-content">
+            <h3>${a.title}</h3>
+            <p>${a.text}</p>
+        </div>`;
+    container.appendChild(card);
+});
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+},{threshold:0.1});
+document.querySelectorAll('.card').forEach(card=>observer.observe(card));
+</script>
 
 </body>
-
 </html>
