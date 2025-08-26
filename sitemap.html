@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Map</title>
+  <style>
+    body {
+      font-family: "Georgia", serif;
+      margin: 40px;
+      background: #fdfdfd;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    ul.tree {
+      list-style: none;
+      padding-left: 20px;
+      position: relative;
+    }
+    ul.tree li {
+      margin: 6px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+    ul.tree li::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 0;
+      width: 10px;
+      border-top: 2px solid #bbb;
+    }
+    ul.tree > li > ul::before {
+      content: '';
+      border-left: 2px solid #bbb;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 10px;
+    }
+    .section {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .link a {
+      text-decoration: none;
+      color: #004080;
+      transition: color 0.2s;
+    }
+    .link a:hover {
+      color: #0073e6;
+    }
+    /* Remove lines for root node */
+    .root > span {
+      position: relative;
+      padding-left: 0 !important;
+    }
+    .root > ul {
+      padding-left: 0;
+    }
+    .root > ul::before {
+      content: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Site Map</h1>
+  <div id="sitemap"></div>
+
+  <script id="sitemap-data" type="application/json">
+    {
+      "SiteName": "MySite",
+      "Sections": [
+        {
+          "name": "Section 1",
+          "links": [
+            {"text": "Home", "url": "index.html"},
+            {"text": "About", "url": "about.html"}
+          ]
+        },
+        {
+          "name": "Section 2",
+          "links": [
+            {"text": "Services", "url": "services.html"},
+            {"text": "Contact", "url": "contact.html"}
+          ]
+        },
+        {
+          "name": "Blog",
+          "links": [
+            {"text": "All Posts", "url": "blog.html"},
+            {"text": "Categories", "url": "categories.html"},
+            {"text": "Archive", "url": "archive.html"}
+          ]
+        }
+      ]
+    }
+  </script>
+
+  <script>
+    const data = JSON.parse(document.getElementById("sitemap-data").textContent);
+    const container = document.getElementById("sitemap");
+
+    function buildTree(sections) {
+      const ul = document.createElement("ul");
+      ul.classList.add("tree");
+
+      sections.forEach(section => {
+        const li = document.createElement("li");
+        const sectionSpan = document.createElement("span");
+        sectionSpan.textContent = "📂 " + section.name;
+        sectionSpan.classList.add("section");
+        li.appendChild(sectionSpan);
+
+        if (section.links && section.links.length > 0) {
+          const linksUl = document.createElement("ul");
+          linksUl.classList.add("tree");
+
+          section.links.forEach(link => {
+            const linkLi = document.createElement("li");
+            const linkSpan = document.createElement("span");
+            linkSpan.classList.add("link");
+            linkSpan.innerHTML = `📄 <a href='${link.url}'>${link.text}</a>`;
+            linkLi.appendChild(linkSpan);
+            linksUl.appendChild(linkLi);
+          });
+
+          li.appendChild(linksUl);
+        }
+
+        ul.appendChild(li);
+      });
+
+      return ul;
+    }
+
+    // Root node without lines
+    const rootUl = document.createElement("ul");
+    rootUl.classList.add("tree");
+
+    const rootLi = document.createElement("li");
+    rootLi.classList.add("root");
+    const rootSpan = document.createElement("span");
+    rootSpan.textContent = "📂 " + data.SiteName;
+    rootSpan.classList.add("section");
+    rootLi.appendChild(rootSpan);
+
+    const childUl = buildTree(data.Sections);
+    rootLi.appendChild(childUl);
+    rootUl.appendChild(rootLi);
+
+    container.appendChild(rootUl);
+  </script>
+</body>
+</html>
